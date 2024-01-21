@@ -1,3 +1,4 @@
+import 'package:booktickets/screens/hotel_screen.dart';
 import 'package:booktickets/screens/ticket_view.dart';
 import 'package:booktickets/utils/app_styles.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
@@ -51,14 +52,18 @@ class _HomeScreenState extends State<HomeScreen> {
                 const Gap(25),
                 Container(
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: const Color(0xFFF4F6FD)
-                  ),
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+                      borderRadius: BorderRadius.circular(10),
+                      color: const Color(0xFFF4F6FD)),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
                   child: Row(
                     children: [
-                      const Icon(FluentSystemIcons.ic_fluent_search_regular, color: Color(0xFFBFC205)),
-                      Text("Search", style: Styles.headlineStyle4,)
+                      const Icon(FluentSystemIcons.ic_fluent_search_regular,
+                          color: Color(0xFFBFC205)),
+                      Text(
+                        "Search",
+                        style: Styles.headlineStyle4,
+                      )
                     ],
                   ),
                 ),
@@ -66,20 +71,56 @@ class _HomeScreenState extends State<HomeScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("Upcoming Flights", style: Styles.headlineStyle2,),
+                    Text(
+                      "Upcoming Flights",
+                      style: Styles.headlineStyle2,
+                    ),
                     InkWell(
-                        onTap: (){
+                        onTap: () {
                           print("Tapped Inkwell");
                         },
-                        child: Text("View all", style: Styles.textStyle.copyWith(color: Styles.primaryColor)))
+                        child: Text("View all",
+                            style: Styles.textStyle
+                                .copyWith(color: Styles.primaryColor)))
                   ],
                 )
-
               ],
             ),
           ),
           const Gap(15),
-          const TicketView(),
+          const SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            padding: EdgeInsets.only(left: 16),
+            child: Row(
+              children: [TicketView(), TicketView()],
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Hotels",
+                  style: Styles.headlineStyle2,
+                ),
+                InkWell(
+                    onTap: () {
+                      print("Tapped Inkwell");
+                    },
+                    child: Text("View all",
+                        style: Styles.textStyle
+                            .copyWith(color: Styles.primaryColor)))
+              ],
+            ),
+          ),
+          const SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            padding: EdgeInsets.only(left: 20),
+            child: Row(
+              children: [HotelScreen(), HotelScreen(),HotelScreen(), HotelScreen()],
+            ),
+          ),
         ],
       ),
     );
